@@ -1,6 +1,0 @@
-requests
-PyYAML
-PyQt5
-psutil
-paho-mqtt
-irsdk-python
