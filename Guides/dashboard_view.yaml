@@ -1,0 +1,149 @@
+title: iR2mqtt View
+path: ir2mqtt-debug
+type: panel
+background: center / cover no-repeat url("/local/web/carbon.jpg") fixed
+cards:
+  - type: vertical-stack
+    cards:
+      - type: custom:layout-card
+        layout_type: grid
+        layout:
+          grid-template-columns: 1fr 1fr 1fr
+        cards:
+          - type: gauge
+            entity: sensor.iracing_speed
+            name: Speed
+            min: 0
+            max: 350
+            severity:
+              green: 0
+              yellow: 200
+              red: 300
+            card_mod:
+              style: |
+                ha-card {
+                  background: radial-gradient(#111, #000);
+                  border: 2px solid #ff0000;
+                  box-shadow: 0 0 10px red;
+                }
+          - type: gauge
+            entity: sensor.iracing_rpm
+            name: RPM
+            min: 0
+            max: 10000
+            severity:
+              green: 0
+              yellow: 6000
+              red: 8000
+            card_mod:
+              style: |
+                ha-card {
+                  background: radial-gradient(#111, #000);
+                  border: 2px solid #ff6600;
+                  box-shadow: 0 0 10px orange;
+                }
+          - type: gauge
+            entity: sensor.iracing_fuel_level
+            name: Fuel
+            min: 0
+            max: 100
+            severity:
+              red: 10
+              yellow: 25
+              green: 50
+            card_mod:
+              style: |
+                ha-card {
+                  background: radial-gradient(#111, #000);
+                  border: 2px solid #00ff88;
+                  box-shadow: 0 0 10px #00ff88;
+                }
+      - type: entities
+        show_header_toggle: false
+        entities:
+          - entity: sensor.iracing_session_type
+            name: Type
+          - entity: sensor.iracing_session_time
+            name: Elapsed Time
+          - entity: sensor.iracing_lap
+            name: Current Lap
+          - entity: sensor.iracing_gear
+            name: Gear
+          - entity: sensor.iracing_on_pit_road_raw
+            name: In Pits
+      - type: grid
+        columns: 4
+        square: false
+        cards:
+          - type: custom:button-card
+            entity: binary_sensor.ir2mqtt_green_flag
+            name: Green
+            icon: mdi:flag-checkered
+            show_state: false
+            state:
+              - value: "on"
+                styles:
+                  card:
+                    - background-color: rgba(0,255,0,0.2)
+                    - border: 2px solid green
+                    - box-shadow: 0 0 10px green
+                  icon:
+                    - color: green
+              - value: "off"
+                styles:
+                  icon:
+                    - color: grey
+          - type: custom:button-card
+            entity: binary_sensor.ir2mqtt_yellow_flag
+            name: Yellow
+            icon: mdi:flag-variant
+            show_state: false
+            state:
+              - value: "on"
+                styles:
+                  card:
+                    - background-color: rgba(255,255,0,0.2)
+                    - border: 2px solid yellow
+                    - box-shadow: 0 0 10px yellow
+                  icon:
+                    - color: yellow
+              - value: "off"
+                styles:
+                  icon:
+                    - color: grey
+          - type: custom:button-card
+            entity: binary_sensor.ir2mqtt_red_flag
+            name: Red
+            icon: mdi:flag
+            show_state: false
+            state:
+              - value: "on"
+                styles:
+                  card:
+                    - background-color: rgba(255,0,0,0.2)
+                    - border: 2px solid red
+                    - box-shadow: 0 0 10px red
+                  icon:
+                    - color: red
+              - value: "off"
+                styles:
+                  icon:
+                    - color: grey
+          - type: custom:button-card
+            entity: binary_sensor.ir2mqtt_checkered_flag
+            name: Finish
+            icon: mdi:flag-checkered
+            show_state: false
+            state:
+              - value: "on"
+                styles:
+                  card:
+                    - background-color: rgba(255,255,255,0.2)
+                    - border: 2px solid white
+                    - box-shadow: 0 0 10px white
+                  icon:
+                    - color: white
+              - value: "off"
+                styles:
+                  icon:
+                    - color: grey
