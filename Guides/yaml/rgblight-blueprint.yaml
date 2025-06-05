@@ -1,0 +1,142 @@
+blueprint:
+  name: iR2mqtt - RGB light according to flags
+  description: Controls a rgb light entity according to flags with color priorities.
+  domain: automation
+  input:
+    light_target:
+      name: RGB light
+      description: Select the rgb light.
+      selector:
+        target:
+          entity:
+            domain: light
+
+mode: restart
+
+trigger:
+  - platform: state
+    entity_id:
+      - binary_sensor.ir2mqtt_red_flag
+      - binary_sensor.ir2mqtt_yellow_flag
+      - binary_sensor.ir2mqtt_yellow_waving_flag
+      - binary_sensor.ir2mqtt_green_flag
+      - binary_sensor.ir2mqtt_blue_flag
+      - binary_sensor.ir2mqtt_debris_flag
+      - binary_sensor.ir2mqtt_caution_flag
+      - binary_sensor.ir2mqtt_caution_waving_flag
+      - binary_sensor.ir2mqtt_checkered_flag
+      - binary_sensor.ir2mqtt_white_flag
+      - binary_sensor.ir2mqtt_black_flag
+      - binary_sensor.ir2mqtt_repair_flag
+      - binary_sensor.ir2mqtt_crossed_flag
+      - binary_sensor.ir2mqtt_on_pit_road
+
+condition: []
+
+action:
+  - choose:
+      - conditions:
+          - condition: state
+            entity_id: binary_sensor.ir2mqtt_red_flag
+            state: "on"
+        sequence:
+          - repeat:
+              while:
+                - condition: state
+                  entity_id: binary_sensor.ir2mqtt_red_flag
+                  state: "on"
+              sequence:
+                - service: light.turn_on
+                  target: !input light_target
+                  data:
+                    rgb_color: [255, 0, 0]
+                - delay: "00:00:01"
+
+      - conditions:
+          - condition: state
+            entity_id: binary_sensor.ir2mqtt_yellow_flag
+            state: "on"
+        sequence:
+          - repeat:
+              while:
+                - condition: state
+                  entity_id: binary_sensor.ir2mqtt_yellow_flag
+                  state: "on"
+              sequence:
+                - service: light.turn_on
+                  target: !input light_target
+                  data:
+                    rgb_color: [255, 255, 0]
+                - delay: "00:00:01"
+
+      - conditions:
+          - condition: state
+            entity_id: binary_sensor.ir2mqtt_yellow_waving_flag
+            state: "on"
+        sequence:
+          - repeat:
+              while:
+                - condition: state
+                  entity_id: binary_sensor.ir2mqtt_yellow_waving_flag
+                  state: "on"
+              sequence:
+                - service: light.turn_on
+                  target: !input light_target
+                  data:
+                    rgb_color: [255, 255, 0]
+                    effect: pulse
+                - delay: "00:00:02"
+
+      - conditions:
+          - condition: state
+            entity_id: binary_sensor.ir2mqtt_green_flag
+            state: "on"
+        sequence:
+          - repeat:
+              while:
+                - condition: state
+                  entity_id: binary_sensor.ir2mqtt_green_flag
+                  state: "on"
+              sequence:
+                - service: light.turn_on
+                  target: !input light_target
+                  data:
+                    rgb_color: [0, 255, 0]
+                - delay: "00:00:01"
+
+      - conditions:
+          - condition: state
+            entity_id: binary_sensor.ir2mqtt_blue_flag
+            state: "on"
+        sequence:
+          - repeat:
+              while:
+                - condition: state
+                  entity_id: binary_sensor.ir2mqtt_blue_flag
+                  state: "on"
+              sequence:
+                - service: light.turn_on
+                  target: !input light_target
+                  data:
+                    rgb_color: [0, 0, 255]
+                - delay: "00:00:01"
+
+      - conditions:
+          - condition: state
+            entity_id: binary_sensor.ir2mqtt_debris_flag
+            state: "on"
+        sequence:
+          - repeat:
+              while:
+                - condition: state
+                  entity_id: binary_sensor.ir2mqtt_debris_flag
+                  state: "on"
+              sequence:
+                - service: light.turn_on
+                  target: !input light_target
+                  data:
+                    rgb_color: [128, 64, 0]
+                - delay: "00:00:01"
+
+  - service: light.turn_off
+    target: !input light_target

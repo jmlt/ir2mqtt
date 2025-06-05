@@ -1,6 +1,6 @@
-# Configuring iR2mqtt
-
 ![Logo](https://sys1823.pt/ir2mqtt/files/logo.png)
+
+# Configuring iR2mqtt
 
 This guide explains how to configure and use the iR2mqtt app to bridge iRacing telemetry to your MQTT broker, with full control via an intuitive graphical interface.
 
@@ -51,10 +51,10 @@ When you launch `iR2mqtt.exe` for the first time, the graphical interface opens 
 
 ### MQTT Broker Settings
 
-- **Host**: Broker IP or hostname (e.g., `192.168.1.100`)
+- **Host**: Broker IP or hostname (e.g., `192.168.1.100`, your HA instance IP)
 - **Port**: Default is 1883
 - **Username / Password**: If required
-- **Topic prefix**: MQTT root topic, e.g. `ir2mqtt`
+- **Topic prefix**: MQTT root topic, e.g. `iracing`
 
 ### General Options (Checkboxes)
 
@@ -105,6 +105,12 @@ You should see entries like:
 - `172.30.32.1: Received PUBLISH from ir2mqtt (d0, q0, r0, m0, 'iracing/speed', ...)`
 
 Alternatively use MQTT tools like [MQTT Explorer](http://mqtt-explorer.com/) to check the telemetry.
+
+---
+
+## Setup Home Assistant Sensors
+
+Follow the guide [here](https://github.com/jmlt/ir2mqtt/blob/main/Guides/HOME-ASSISTANT.md).
 
 ---
 
