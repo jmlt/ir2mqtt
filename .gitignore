@@ -6,12 +6,14 @@ env/
 dist/
 build/
 dev/
+Release/
 *.spec
 *.json
 *.bak
 *.pyo
 *.pyd
 *.log
+*.exe
 *.sqlite3
 .DS_Store
 Thumbs.db
