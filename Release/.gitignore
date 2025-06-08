@@ -5,7 +5,9 @@ venv/
 env/
 dist/
 build/
+release/
 dev/
+web/
 *.spec
 *.json
 *.bak
