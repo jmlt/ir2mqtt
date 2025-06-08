@@ -12,7 +12,6 @@ dev/
 *.pyo
 *.pyd
 *.log
-*.exe
 *.sqlite3
 .DS_Store
 Thumbs.db
