@@ -6,7 +6,7 @@ env/
 dist/
 build/
 dev/
-Release/
+release/
 *.spec
 *.json
 *.bak
