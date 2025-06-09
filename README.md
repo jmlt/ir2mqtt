@@ -17,6 +17,9 @@ iR2mqtt is a lightweight bridge application that connects iRacing telemetry data
 
 ---
 
+## Download 
+Latest release here: https://github.com/jmlt/ir2mqtt/releases/latest
+
 ## Telemetry Data Exposed via MQTT and UI
 
 The following telemetry fields are published and available in the UI and via MQTT:
