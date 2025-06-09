@@ -269,7 +269,7 @@ binary_sensor:
       ir2mqtt_on_pit_road:
         friendly_name: "iR2MQTT On Pit Road"
         value_template: "{{ is_state('sensor.iracing_on_pit_road_raw', 'True') }}"
-        icon_template: mdi:pit
+        icon_template: mdi:gauge
 
 # ===========================
 # End of iR2mqtt sensors
