@@ -11,7 +11,7 @@ iR2mqtt is a lightweight bridge application that connects iRacing telemetry data
 - Reads live telemetry data from iRacing.
 - Publishes telemetry data to MQTT topics.
 - Supports MQTT communication compatible with Home Assistant and similar platforms.
-- Donation key system ("donation keys") to unlock additional telemetry features.
+- Donation key system to unlock additional telemetry features.
 - Automatic update checker linking to GitHub releases.
 - Simple, fast, and easy to use.
 
