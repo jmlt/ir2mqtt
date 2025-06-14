@@ -83,6 +83,7 @@ or
 
 - Windows OS 
 - MQTT broker
+- iRacing
 
 ---
 

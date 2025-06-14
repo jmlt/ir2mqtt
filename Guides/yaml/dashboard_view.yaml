@@ -1,6 +1,6 @@
-title: iR2mqtt View
-path: ir2mqtt-debug
 type: panel
+icon: mdi:racing-helmet
+path: iracing
 background: center / cover no-repeat url("/local/web/carbon.jpg") fixed
 cards:
   - type: vertical-stack
