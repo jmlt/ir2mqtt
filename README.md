@@ -20,35 +20,13 @@ iR2mqtt is a lightweight bridge application that connects iRacing telemetry data
 ## Download 
 Latest release here: https://github.com/jmlt/ir2mqtt/releases/latest
 
-## Telemetry Data Exposed via MQTT and UI
+## How to Use
 
-The following telemetry fields are published and available in the UI and via MQTT:
-
-- `session_type`
-- `session_name`
-- `timestamp`
-- `session_time`
-- `session_time_remain`
-- `on_pit_road`
-- `session_flags`
-- `active_flags`
-- `speed`
-- `rpm`
-- `gear`
-- `fuel_level`
-- `lap`
-
----
-
-## Transparency: Lite Python Version
-
-A **Lite version** of iR2mqtt is available in the `/python` folder. This version exists **solely** to demonstrate donation key validation and update checking logic transparently. It does **not** implement telemetry reading or MQTT publishing directly — these are handled by the external SDKs and libraries (`pyirsdk` and `paho-mqtt`).
-
-The `main.py` in the Lite version:
-
-- Validates donation keys entered by the user.
-- Checks for program updates via GitHub releases.
-- Does **not** handle telemetry or MQTT communication itself.
+1. Download the latest release `.exe` from GitHub.
+2. Configure your MQTT broker settings. Guide [here](https://github.com/jmlt/ir2mqtt/blob/main/Guides/CONFIGURATION.md)
+3. Setup Home Assistant sensors. Guide [here](https://github.com/jmlt/ir2mqtt/blob/main/Guides/HOME-ASSISTANT.md)
+4. Run the executable to start sending iRacing telemetry to MQTT.
+5. Optionally, enter your donation key to unlock additional features.
 
 ---
 
@@ -64,7 +42,32 @@ or
 
 - During the PayPal donation process, **only your email address is stored** to associate the donation key with your total donated amount.
 - No other personal data or payment details are stored or handled by iR2mqtt.
-- Donation keys are optional and support the ongoing development of this project.
+- Donation keys are optional and support the ongoing development of this project. (Key will be automatically generated and sent via email passed by Paypal, please check SPAM folder.)
+
+---
+
+## Requirements
+
+- Windows OS 
+- MQTT broker
+- iRacing
+
+---
+
+## Home Assistant Community Post
+https://community.home-assistant.io/t/ir2mqtt-bring-iracing-live-telemetry-to-home-assistant/901589
+
+---
+
+## Transparency: Lite Python Version
+
+A **Lite version** of iR2mqtt is available in the `/python` folder. This version exists **solely** to demonstrate donation key validation and update checking logic transparently. It does **not** implement telemetry reading or MQTT publishing directly — these are handled by the external SDKs and libraries (`pyirsdk` and `paho-mqtt`).
+
+The `main.py` in the Lite version:
+
+- Validates donation keys entered by the user.
+- Checks for program updates via GitHub releases.
+- Does **not** handle telemetry or MQTT communication itself.
 
 ---
 
@@ -79,24 +82,7 @@ or
 
 ---
 
-## Requirements
-
-- Windows OS 
-- MQTT broker
-- iRacing
-
----
-
-## How to Use
-
-1. Download the latest release `.exe` from GitHub.
-2. Configure your MQTT broker settings. Guide [here](https://github.com/jmlt/ir2mqtt/blob/main/Guides/CONFIGURATION.md)
-3. Setup Home Assistant sensors. Guide [here](https://github.com/jmlt/ir2mqtt/blob/main/Guides/HOME-ASSISTANT.md)
-4. Run the executable to start sending iRacing telemetry to MQTT.
-5. Optionally, enter your donation key to unlock additional features.
-
----
-
 ## Contact
 
 For questions or support, please open an issue on GitHub or contact at sys1823.pt.
+
