@@ -25,12 +25,22 @@ Replace `iracing` (default) with the MQTT topic prefix you configured in the iR2
 mqtt:
   sensor:
 
-    # Speed sensor - car speed in km/h
-    - name: "iR2mqtt Speed"
-      unique_id: iracing_speed
+    # Speed sensor - car speed in m/s
+    - name: "iR2mqtt Speed m/s"
+      unique_id: iracing_speed_ms
       state_topic: "iracing/telemetry"
       value_template: "{{ value_json.speed | float | round(1) }}"
-      unit_of_measurement: "mph"
+      unit_of_measurement: "km/h"
+      device_class: "speed"
+      icon: mdi:speedometer
+      expire_after: 30
+
+    # Speed sensor - car speed in km/h
+    - name: "iR2mqtt Speed km/h"
+      unique_id: iracing_speed_kmh
+      state_topic: "iracing/telemetry"
+      value_template: "{{ (value_json.speed | float * 3.6) | round(1) }}"
+      unit_of_measurement: "km/h"
       device_class: "speed"
       icon: mdi:speedometer
       expire_after: 30
