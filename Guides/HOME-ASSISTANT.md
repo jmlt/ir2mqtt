@@ -30,17 +30,27 @@ mqtt:
       unique_id: iracing_speed_ms
       state_topic: "iracing/telemetry"
       value_template: "{{ value_json.speed | float | round(1) }}"
-      unit_of_measurement: "km/h"
+      unit_of_measurement: "m/s"
       device_class: "speed"
       icon: mdi:speedometer
       expire_after: 30
-
+      
     # Speed sensor - car speed in km/h
     - name: "iR2mqtt Speed km/h"
       unique_id: iracing_speed_kmh
       state_topic: "iracing/telemetry"
       value_template: "{{ (value_json.speed | float * 3.6) | round(1) }}"
       unit_of_measurement: "km/h"
+      device_class: "speed"
+      icon: mdi:speedometer
+      expire_after: 30
+      
+    # Speed sensor - car speed in mph
+    - name: "iR2mqtt Speed mph"
+      unique_id: iracing_speed_mph
+      state_topic: "iracing/telemetry"
+      value_template: "{{ (value_json.speed | float * 2.237) | round(1) }}"
+      unit_of_measurement: "mph"
       device_class: "speed"
       icon: mdi:speedometer
       expire_after: 30
@@ -300,7 +310,7 @@ binary_sensor:
       ir2mqtt_on_pit_road:
         friendly_name: "iR2MQTT On Pit Road"
         value_template: "{{ is_state('sensor.iracing_on_pit_road_raw', 'True') }}"
-        icon_template: mdi:pit
+        icon_template: mdi:gauge
 
 # ===========================
 # End of iR2mqtt sensors
