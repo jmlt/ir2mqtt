@@ -22,8 +22,4 @@ Replace `iracing` (default) with the MQTT topic prefix you configured in the iR2
 
 
 ## Step 3: Ready!
-You can now use ir2mqtt sensors in automations, dashboards etc. Here are some examples: 
-
-[dashboard-view.yaml](https://github.com/jmlt/ir2mqtt/blob/main/Guides/yaml/dashboard_view.yaml)
-
-[rgblight-blueprint.yaml](https://github.com/jmlt/ir2mqtt/blob/main/Guides/yaml/rgblight-blueprint.yaml)
+You can now use ir2mqtt sensors in automations, dashboards etc.
