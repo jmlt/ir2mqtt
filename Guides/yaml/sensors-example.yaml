@@ -3,10 +3,10 @@
 # ===========================
 mqtt:
   sensor:
-
+  
     # Speed sensor - car speed in m/s
     - name: "iR2mqtt Speed m/s"
-      unique_id: iracing_speed_ms
+      unique_id: ir2mqtt_speed_ms
       state_topic: "iracing/telemetry"
       value_template: "{{ value_json.speed | float | round(1) }}"
       unit_of_measurement: "m/s"
@@ -16,7 +16,7 @@ mqtt:
       
     # Speed sensor - car speed in km/h
     - name: "iR2mqtt Speed km/h"
-      unique_id: iracing_speed_kmh
+      unique_id: ir2mqtt_speed_kmh
       state_topic: "iracing/telemetry"
       value_template: "{{ (value_json.speed | float * 3.6) | round(1) }}"
       unit_of_measurement: "km/h"
@@ -26,7 +26,7 @@ mqtt:
       
     # Speed sensor - car speed in mph
     - name: "iR2mqtt Speed mph"
-      unique_id: iracing_speed_mph
+      unique_id: ir2mqtt_speed_mph
       state_topic: "iracing/telemetry"
       value_template: "{{ (value_json.speed | float * 2.237) | round(1) }}"
       unit_of_measurement: "mph"
@@ -36,7 +36,7 @@ mqtt:
 
     # Engine RPM sensor
     - name: "iR2mqtt RPM"
-      unique_id: iracing_rpm
+      unique_id: ir2mqtt_rpm
       state_topic: "iracing/telemetry"
       value_template: "{{ value_json.rpm | int }}"
       unit_of_measurement: "RPM"
@@ -45,7 +45,7 @@ mqtt:
 
     # Current Gear sensor
     - name: "iR2mqtt Gear"
-      unique_id: iracing_gear
+      unique_id: ir2mqtt_gear
       state_topic: "iracing/telemetry"
       value_template: "{{ value_json.gear }}"
       icon: mdi:car-shift-pattern
@@ -53,7 +53,7 @@ mqtt:
 
     # Fuel Level sensor
     - name: "iR2mqtt Fuel Level"
-      unique_id: iracing_fuel
+      unique_id: ir2mqtt_fuel
       state_topic: "iracing/telemetry"
       value_template: "{{ value_json.fuel_level | float | round(2) }}"
       unit_of_measurement: "L"
@@ -62,7 +62,7 @@ mqtt:
 
     # Current Lap sensor
     - name: "iR2mqtt Lap"
-      unique_id: iracing_lap
+      unique_id: ir2mqtt_lap
       state_topic: "iracing/telemetry"
       value_template: "{{ value_json.lap | int }}"
       unit_of_measurement: "lap"
@@ -71,7 +71,7 @@ mqtt:
 
     # Session Elapsed Time sensor (minutes)
     - name: "iR2mqtt Session Time"
-      unique_id: iracing_session_time
+      unique_id: ir2mqtt_session_time
       state_topic: "iracing/telemetry"
       value_template: "{{ (value_json.session_time | float / 60) | round(2) }}"
       unit_of_measurement: "min"
@@ -81,7 +81,7 @@ mqtt:
 
     # Session Remaining Time sensor (minutes)
     - name: "iR2mqtt Time Remaining"
-      unique_id: iracing_time_remain
+      unique_id: ir2mqtt_time_remain
       state_topic: "iracing/telemetry"
       value_template: >
         {% if value_json.session_time_remain is defined %}
@@ -96,7 +96,7 @@ mqtt:
 
     # Session Type sensor
     - name: "iR2mqtt Session Type"
-      unique_id: iracing_session_type
+      unique_id: ir2mqtt_session_type
       state_topic: "iracing/telemetry"
       value_template: "{{ value_json.session_type }}"
       icon: mdi:trophy
@@ -104,7 +104,7 @@ mqtt:
 
     # Session Name sensor
     - name: "iR2mqtt Session Name"
-      unique_id: iracing_session_name
+      unique_id: ir2mqtt_session_name
       state_topic: "iracing/telemetry"
       value_template: "{{ value_json.session_name }}"
       icon: mdi:format-title
@@ -112,7 +112,7 @@ mqtt:
 
     # Active Flags sensor - main active flag or "No Flag"
     - name: "iR2mqtt Active Flag"
-      unique_id: iracing_flags
+      unique_id: ir2mqtt_flags
       state_topic: "iracing/telemetry"
       value_template: >
         {{ value_json.active_flags[0] if value_json.active_flags else 'No Flag' }}
@@ -127,7 +127,7 @@ mqtt:
 
     # Telemetry Timestamp sensor
     - name: "iR2mqtt Timestamp"
-      unique_id: iracing_timestamp
+      unique_id: ir2mqtt_timestamp
       state_topic: "iracing/telemetry"
       value_template: "{{ value_json.timestamp }}"
       icon: mdi:clock-digital
@@ -135,87 +135,155 @@ mqtt:
 
     # Raw flags sensors (True/False for each flag)
     - name: "iR2mqtt Checkered Flag Raw"
-      unique_id: iracing_flag_checkered_raw
+      unique_id: ir2mqtt_flag_checkered_raw
       state_topic: "iracing/telemetry"
       value_template: "{{ 'Checkered' in value_json.active_flags }}"
       expire_after: 30
 
     - name: "iR2mqtt White Flag Raw"
-      unique_id: iracing_flag_white_raw
+      unique_id: ir2mqtt_flag_white_raw
       state_topic: "iracing/telemetry"
       value_template: "{{ 'White' in value_json.active_flags }}"
       expire_after: 30
 
     - name: "iR2mqtt Green Flag Raw"
-      unique_id: iracing_flag_green_raw
+      unique_id: ir2mqtt_flag_green_raw
       state_topic: "iracing/telemetry"
       value_template: "{{ 'Green' in value_json.active_flags }}"
       expire_after: 30
 
     - name: "iR2mqtt Yellow Flag Raw"
-      unique_id: iracing_flag_yellow_raw
+      unique_id: ir2mqtt_flag_yellow_raw
       state_topic: "iracing/telemetry"
       value_template: "{{ 'Yellow' in value_json.active_flags }}"
       expire_after: 30
 
     - name: "iR2mqtt Red Flag Raw"
-      unique_id: iracing_flag_red_raw
+      unique_id: ir2mqtt_flag_red_raw
       state_topic: "iracing/telemetry"
       value_template: "{{ 'Red' in value_json.active_flags }}"
       expire_after: 30
 
     - name: "iR2mqtt Blue Flag Raw"
-      unique_id: iracing_flag_blue_raw
+      unique_id: ir2mqtt_flag_blue_raw
       state_topic: "iracing/telemetry"
       value_template: "{{ 'Blue' in value_json.active_flags }}"
       expire_after: 30
 
     - name: "iR2mqtt Debris Flag Raw"
-      unique_id: iracing_flag_debris_raw
+      unique_id: ir2mqtt_flag_debris_raw
       state_topic: "iracing/telemetry"
       value_template: "{{ 'Debris' in value_json.active_flags }}"
       expire_after: 30
 
     - name: "iR2mqtt Crossed Flag Raw"
-      unique_id: iracing_flag_crossed_raw
+      unique_id: ir2mqtt_flag_crossed_raw
       state_topic: "iracing/telemetry"
       value_template: "{{ 'Crossed' in value_json.active_flags }}"
       expire_after: 30
 
     - name: "iR2mqtt Yellow Waving Flag Raw"
-      unique_id: iracing_flag_yellow_waving_raw
+      unique_id: ir2mqtt_flag_yellow_waving_raw
       state_topic: "iracing/telemetry"
       value_template: "{{ 'Yellow Waving' in value_json.active_flags }}"
       expire_after: 30
 
     - name: "iR2mqtt Black Flag Raw"
-      unique_id: iracing_flag_black_raw
+      unique_id: ir2mqtt_flag_black_raw
       state_topic: "iracing/telemetry"
       value_template: "{{ 'Black' in value_json.active_flags }}"
       expire_after: 30
 
     - name: "iR2mqtt Repair Flag Raw"
-      unique_id: iracing_flag_repair_raw
+      unique_id: ir2mqtt_flag_repair_raw
       state_topic: "iracing/telemetry"
       value_template: "{{ 'Repair' in value_json.active_flags }}"
       expire_after: 30
 
     - name: "iR2mqtt Caution Flag Raw"
-      unique_id: iracing_flag_caution_raw
+      unique_id: ir2mqtt_flag_caution_raw
       state_topic: "iracing/telemetry"
       value_template: "{{ 'Caution' in value_json.active_flags }}"
       expire_after: 30
 
     - name: "iR2mqtt Caution Waving Flag Raw"
-      unique_id: iracing_flag_caution_waving_raw
+      unique_id: ir2mqtt_flag_caution_waving_raw
       state_topic: "iracing/telemetry"
       value_template: "{{ 'Caution Waving' in value_json.active_flags }}"
       expire_after: 30
 
+    - name: "iR2mqtt Disqualify Flag Raw"
+      unique_id: ir2mqtt_flag_disqualify_raw
+      state_topic: "iracing/telemetry"
+      value_template: "{{ 'Disqualify' in value_json.active_flags }}"
+      expire_after: 30
+
+    - name: "iR2mqtt Furled Flag Raw"
+      unique_id: ir2mqtt_flag_furled_raw
+      state_topic: "iracing/telemetry"
+      value_template: "{{ 'Furled' in value_json.active_flags }}"
+      expire_after: 30
+      
+    - name: "iR2mqtt Green Held Flag Raw"
+      unique_id: ir2mqtt_flag_green_held_raw
+      state_topic: "iracing/telemetry"
+      value_template: "{{ 'Green Held' in value_json.active_flags }}"
+      expire_after: 30
+
+    - name: "iR2mqtt Random Waving Flag Raw"
+      unique_id: ir2mqtt_flag_random_waving_raw
+      state_topic: "iracing/telemetry"
+      value_template: "{{ 'Random Waving' in value_json.active_flags }}"
+      expire_after: 30
+      
     - name: "iR2mqtt On Pit Road Raw"
-      unique_id: iracing_on_pit_road_raw
+      unique_id: ir2mqtt_on_pit_road_raw
       state_topic: "iracing/telemetry"
       value_template: "{{ value_json.on_pit_road }}"
+      expire_after: 30
+
+    # Incidents sensor
+    - name: "iR2mqtt Incidents"
+      unique_id: ir2mqtt_incs
+      state_topic: "iracing/telemetry"
+      value_template: "{{ value_json.incs }}"
+      icon: mdi:alert
+      expire_after: 30
+  
+    # Start Lights sensor
+    - name: "iR2mqtt Start Lights"
+      unique_id: ir2mqtt_startlights
+      state_topic: "iracing/telemetry"
+      value_template: >
+        {{ value_json.active_lights[0] if value_json.active_lights else 'No Lights' }}
+      icon: mdi:traffic-light
+      json_attributes_topic: "iracing/telemetry"
+      json_attributes_template: >
+        {
+          "all_lights": {{ value_json.active_lights | tojson }},
+        }
+      expire_after: 30
+    
+    # Start Lights Sensor raw
+    - name: "iR2mqtt Ready Raw"
+      unique_id: ir2mqtt_ready_light
+      state_topic: "iracing/telemetry"
+      value_template: "{{ 'Ready' in value_json.active_lights }}"
+      icon: mdi:traffic-light
+      expire_after: 30
+      
+    - name: "iR2mqtt Set Raw"
+      unique_id: ir2mqtt_set_light
+      state_topic: "iracing/telemetry"
+      value_template: "{{ 'Set' in value_json.active_lights }}"
+      icon: mdi:traffic-light
+      expire_after: 30
+      
+    - name: "iR2mqtt Go Raw"
+      unique_id: ir2mqtt_go_light
+      state_topic: "iracing/telemetry"
+      value_template: "{{ 'Go' in value_json.active_lights }}"
+      icon: mdi:traffic-light
       expire_after: 30
 
 binary_sensor:
@@ -223,74 +291,129 @@ binary_sensor:
     sensors:
       ir2mqtt_checkered_flag:
         friendly_name: "iR2MQTT Checkered Flag"
-        value_template: "{{ is_state('sensor.iracing_checkered_flag_raw', 'True') }}"
+        unique_id: ir2mqtt_checkered_flag_bs
+        value_template: "{{ is_state('sensor.ir2mqtt_checkered_flag_raw', 'True') }}"
         icon_template: mdi:flag-checkered
 
       ir2mqtt_white_flag:
         friendly_name: "iR2MQTT White Flag"
-        value_template: "{{ is_state('sensor.iracing_white_flag_raw', 'True') }}"
+        unique_id: ir2mqtt_white_flag_bs
+        value_template: "{{ is_state('sensor.ir2mqtt_white_flag_raw', 'True') }}"
         icon_template: mdi:flag-outline
 
       ir2mqtt_green_flag:
         friendly_name: "iR2MQTT Green Flag"
-        value_template: "{{ is_state('sensor.iracing_green_flag_raw', 'True') }}"
+        unique_id: ir2mqtt_green_flag_bs
+        value_template: "{{ is_state('sensor.ir2mqtt_green_flag_raw', 'True') }}"
         icon_template: mdi:flag-variant
 
       ir2mqtt_yellow_flag:
         friendly_name: "iR2MQTT Yellow Flag"
-        value_template: "{{ is_state('sensor.iracing_yellow_flag_raw', 'True') }}"
+        unique_id: ir2mqtt_yellow_flag_bs
+        value_template: "{{ is_state('sensor.ir2mqtt_yellow_flag_raw', 'True') }}"
         icon_template: mdi:flag
 
       ir2mqtt_red_flag:
         friendly_name: "iR2MQTT Red Flag"
-        value_template: "{{ is_state('sensor.iracing_red_flag_raw', 'True') }}"
+        unique_id: ir2mqtt_red_flag_bs
+        value_template: "{{ is_state('sensor.ir2mqtt_red_flag_raw', 'True') }}"
         icon_template: mdi:flag
 
       ir2mqtt_blue_flag:
         friendly_name: "iR2MQTT Blue Flag"
-        value_template: "{{ is_state('sensor.iracing_blue_flag_raw', 'True') }}"
+        unique_id: ir2mqtt_blue_flag_bs
+        value_template: "{{ is_state('sensor.ir2mqtt_blue_flag_raw', 'True') }}"
         icon_template: mdi:flag
 
       ir2mqtt_debris_flag:
         friendly_name: "iR2MQTT Debris Flag"
-        value_template: "{{ is_state('sensor.iracing_debris_flag_raw', 'True') }}"
+        unique_id: ir2mqtt_debris_flag_bs
+        value_template: "{{ is_state('sensor.ir2mqtt_debris_flag_raw', 'True') }}"
         icon_template: mdi:flag
 
       ir2mqtt_crossed_flag:
         friendly_name: "iR2MQTT Crossed Flag"
-        value_template: "{{ is_state('sensor.iracing_crossed_flag_raw', 'True') }}"
+        unique_id: ir2mqtt_crossed_flag_bs
+        value_template: "{{ is_state('sensor.ir2mqtt_crossed_flag_raw', 'True') }}"
         icon_template: mdi:flag
 
       ir2mqtt_yellow_waving_flag:
         friendly_name: "iR2MQTT Yellow Waving Flag"
-        value_template: "{{ is_state('sensor.iracing_yellow_waving_flag_raw', 'True') }}"
+        unique_id: ir2mqtt_yellow_wave_flag_bs
+        value_template: "{{ is_state('sensor.ir2mqtt_yellow_waving_flag_raw', 'True') }}"
         icon_template: mdi:flag
 
       ir2mqtt_black_flag:
         friendly_name: "iR2MQTT Black Flag"
-        value_template: "{{ is_state('sensor.iracing_black_flag_raw', 'True') }}"
+        unique_id: ir2mqtt_black_flag_bs
+        value_template: "{{ is_state('sensor.ir2mqtt_black_flag_raw', 'True') }}"
         icon_template: mdi:flag
 
       ir2mqtt_repair_flag:
         friendly_name: "iR2MQTT Repair Flag"
-        value_template: "{{ is_state('sensor.iracing_repair_flag_raw', 'True') }}"
+        unique_id: ir2mqtt_repair_flag_bs
+        value_template: "{{ is_state('sensor.ir2mqtt_repair_flag_raw', 'True') }}"
         icon_template: mdi:flag
 
       ir2mqtt_caution_flag:
         friendly_name: "iR2MQTT Caution Flag"
-        value_template: "{{ is_state('sensor.iracing_caution_flag_raw', 'True') }}"
+        unique_id: ir2mqtt_caution_flag_bs
+        value_template: "{{ is_state('sensor.ir2mqtt_caution_flag_raw', 'True') }}"
         icon_template: mdi:flag
 
       ir2mqtt_caution_waving_flag:
         friendly_name: "iR2MQTT Caution Waving Flag"
-        value_template: "{{ is_state('sensor.iracing_caution_waving_flag_raw', 'True') }}"
+        unique_id: ir2mqtt_caution_wave_flag_bs
+        value_template: "{{ is_state('sensor.ir2mqtt_caution_waving_flag_raw', 'True') }}"
         icon_template: mdi:flag
 
+      ir2mqtt_disqualify_flag:
+        friendly_name: "iR2MQTT Disqualify Flag"
+        unique_id: ir2mqtt_disqualify_flag_bs
+        value_template: "{{ is_state('sensor.ir2mqtt_flag_disqualify_raw', 'True') }}"
+        icon_template: mdi:flag
+
+      ir2mqtt_furled_flag:
+        friendly_name: "iR2MQTT Furled Flag"
+        unique_id: ir2mqtt_furled_flag_bs
+        value_template: "{{ is_state('sensor.ir2mqtt_flag_furled_raw', 'True') }}"
+        icon_template: mdi:flag
+
+      ir2mqtt_green_held_flag:
+        friendly_name: "iR2MQTT Green Held Flag"
+        unique_id: ir2mqtt_greenheld_flag_bs
+        value_template: "{{ is_state('sensor.ir2mqtt_flag_green_held_raw', 'True') }}"
+        icon_template: mdi:flag
+
+      ir2mqtt_random_waving_flag:
+        friendly_name: "iR2MQTT Random Waving Flag"
+        unique_id: ir2mqtt_randomwaving_flag_bs
+        value_template: "{{ is_state('sensor.ir2mqtt_flag_random_waving_raw', 'True') }}"
+        icon_template: mdi:flag
+    
       ir2mqtt_on_pit_road:
         friendly_name: "iR2MQTT On Pit Road"
-        value_template: "{{ is_state('sensor.iracing_on_pit_road_raw', 'True') }}"
+        unique_id: ir2mqtt_pitroad_bs
+        value_template: "{{ is_state('sensor.ir2mqtt_on_pit_road_raw', 'True') }}"
         icon_template: mdi:gauge
 
+      ir2mqtt_ready_light:
+        friendly_name: "iR2MQTT Ready Light"
+        unique_id: ir2mqtt_ready_light_bs
+        value_template: "{{ is_state('sensor.ir2mqtt_ready_raw', 'True') }}"
+        icon_template: mdi:traffic-light
+
+      ir2mqtt_set_light:
+        friendly_name: "iR2MQTT Set Light"
+        unique_id: ir2mqtt_set_light_bs
+        value_template: "{{ is_state('sensor.ir2mqtt_set_raw', 'True') }}"
+        icon_template: mdi:traffic-light
+
+      ir2mqtt_go_light:
+        friendly_name: "iR2MQTT Go Light"
+        unique_id: ir2mqtt_go_light_bs
+        value_template: "{{ is_state('sensor.ir2mqtt_go_raw', 'True') }}"
+        icon_template: mdi:traffic-light
 # ===========================
 # End of iR2mqtt sensors
 # ===========================
