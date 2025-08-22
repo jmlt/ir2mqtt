@@ -49,7 +49,7 @@ or
 ## Requirements
 
 - Windows OS 
-- MQTT broker
+- MQTT broker (HA Addon)
 - iRacing
 
 ---
@@ -61,7 +61,7 @@ https://community.home-assistant.io/t/ir2mqtt-bring-iracing-live-telemetry-to-ho
 
 ## Transparency: Lite Python Version
 
-A **Lite version** of iR2mqtt is available in the `/python` folder. This version exists **solely** to demonstrate donation key validation and update checking logic transparently. It does **not** implement telemetry reading or MQTT publishing directly — these are handled by the external SDKs and libraries (`pyirsdk` and `paho-mqtt`).
+A **Lite version** of iR2mqtt is available in the `/python` folder. This version exists **solely** to demonstrate donation key validation and update checking logic transparently. It does **not** implement telemetry reading or MQTT publishing directly, these are handled by the external SDKs and libraries (`pyirsdk` and `paho-mqtt`).
 
 The `main.py` in the Lite version:
 
