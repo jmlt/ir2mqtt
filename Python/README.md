@@ -13,16 +13,16 @@ This Lite version exists **only** to provide a transparent demonstration of:
 
 It does **not** implement telemetry reading or MQTT communication. Those are handled by the open-source libraries:
 
-- [`pyirsdk`](https://github.com/kutu/pyirsdk) — to read iRacing telemetry.
-- [`paho-mqtt`](https://github.com/eclipse/paho.mqtt.python) — to publish telemetry via MQTT.
+- [`pyirsdk`](https://github.com/kutu/pyirsdk) - to read iRacing telemetry.
+- [`paho-mqtt`](https://github.com/eclipse/paho.mqtt.python) - to publish telemetry via MQTT.
 
 ---
 
 ## Included Scripts
 
-- `main.py` — Demonstrates donation key validation and update checking.
-- `license_manager.py` — Donation key validation logic.
-- `updater.py` — GitHub release update checker.
+- `main.py` - Demonstrates donation key validation and update checking.
+- `license_manager.py` - Donation key validation logic.
+- `updater.py` - GitHub release update checker.
 
 ---
 
