@@ -11,22 +11,24 @@ iR2mqtt is a lightweight bridge application that connects iRacing telemetry data
 - Reads live telemetry data from iRacing.
 - Publishes telemetry data to MQTT topics.
 - Supports MQTT communication compatible with Home Assistant and similar platforms.
-- Donation key system to unlock additional telemetry features.
-- Automatic update checker linking to GitHub releases.
 - Simple, fast, and easy to use.
 
 ---
 
 ## Download 
+APP
 Latest release here: https://github.com/jmlt/ir2mqtt/releases/latest
+
+HA Integration: https://github.com/jmlt/ir2mqtt_integration
+
 
 ## How to Use
 
-1. Download the latest release `.exe` from GitHub.
+1. Download the [latest release](https://github.com/jmlt/ir2mqtt/releases/latest)
 2. Configure your MQTT broker settings. Guide [here](https://github.com/jmlt/ir2mqtt/blob/main/Guides/CONFIGURATION.md)
-3. Setup Home Assistant sensors. Guide [here](https://github.com/jmlt/ir2mqtt/blob/main/Guides/HOME-ASSISTANT.md)
-4. Run the executable to start sending iRacing telemetry to MQTT.
-5. Optionally, enter your donation key to unlock additional features.
+3. Run the executable to start sending iRacing telemetry to MQTT.
+4. Optionally, enter your donation key to unlock additional features.
+5. Setup [iR2mqtt Home Assistant integration](https://github.com/jmlt/ir2mqtt_integration). Guide [here](https://github.com/jmlt/ir2mqtt/blob/main/Guides/HOME-ASSISTANT.md)
 
 ---
 
@@ -48,7 +50,7 @@ or
 
 ## Requirements
 
-- Windows OS 
+- iR2mqtt app and integration
 - MQTT broker (HA Addon)
 - iRacing
 
