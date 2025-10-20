@@ -1,0 +1,259 @@
+alias: AUTO - iRacing v2
+description: Control light enteties according to iR2mqtt flags with priority
+triggers:
+  - entity_id:
+      - binary_sensor.iracing_telemetry_ir2mqtt_red_flag
+      - binary_sensor.iracing_telemetry_ir2mqtt_black_flag
+      - binary_sensor.iracing_telemetry_ir2mqtt_checkered_flag
+      - binary_sensor.iracing_telemetry_ir2mqtt_caution_waving_flag
+      - binary_sensor.iracing_telemetry_ir2mqtt_yellow_waving_flag
+      - binary_sensor.iracing_telemetry_ir2mqtt_caution_flag
+      - binary_sensor.iracing_telemetry_ir2mqtt_yellow_flag
+      - binary_sensor.iracing_telemetry_ir2mqtt_debris_flag
+      - binary_sensor.iracing_telemetry_ir2mqtt_blue_flag
+      - binary_sensor.iracing_telemetry_ir2mqtt_white_flag
+      - binary_sensor.iracing_telemetry_ir2mqtt_repair_flag
+      - binary_sensor.iracing_telemetry_ir2mqtt_crossed_flag
+      - binary_sensor.iracing_telemetry_ir2mqtt_on_pit_road
+      - binary_sensor.iracing_telemetry_ir2mqtt_green_flag
+    trigger: state
+actions:
+  - choose:
+      - conditions:
+          - condition: state
+            entity_id: binary_sensor.iracing_telemetry_ir2mqtt_red_flag
+            state: "on"
+        sequence:
+          - repeat:
+              while:
+                - condition: state
+                  entity_id: binary_sensor.iracing_telemetry_ir2mqtt_red_flag
+                  state: "on"
+              sequence:
+                - target:
+                    entity_id: light.prateleiraescritorio
+                  data:
+                    rgb_color:
+                      - 255
+                      - 0
+                      - 0
+                    brightness_pct: 100
+                  action: light.turn_on
+                - delay:
+                    milliseconds: 500
+                - target:
+                    entity_id: light.prateleiraescritorio
+                  action: light.turn_off
+                - delay:
+                    milliseconds: 500
+      - conditions:
+          - condition: state
+            entity_id: binary_sensor.iracing_telemetry_ir2mqtt_black_flag
+            state: "on"
+        sequence:
+          - target:
+              entity_id: light.prateleiraescritorio
+            action: light.turn_off
+      - conditions:
+          - condition: state
+            entity_id: binary_sensor.iracing_telemetry_ir2mqtt_checkered_flag
+            state: "on"
+        sequence:
+          - target:
+              entity_id: light.prateleiraescritorio
+            data:
+              rgb_color:
+                - 255
+                - 255
+                - 255
+              brightness_pct: 100
+              effect: colorloop
+            action: light.turn_on
+      - conditions:
+          - condition: state
+            entity_id: binary_sensor.iracing_telemetry_ir2mqtt_caution_waving_flag
+            state: "on"
+        sequence:
+          - target:
+              entity_id: light.prateleiraescritorio
+            data:
+              rgb_color:
+                - 255
+                - 255
+                - 0
+              brightness_pct: 100
+              effect: colorloop
+            action: light.turn_on
+      - conditions:
+          - condition: state
+            entity_id: binary_sensor.iracing_telemetry_ir2mqtt_yellow_waving_flag
+            state: "on"
+        sequence:
+          - target:
+              entity_id: light.prateleiraescritorio
+            data:
+              rgb_color:
+                - 255
+                - 255
+                - 0
+              brightness_pct: 100
+              flash: short
+            action: light.turn_on
+      - conditions:
+          - condition: state
+            entity_id: binary_sensor.iracing_telemetry_ir2mqtt_caution_flag
+            state: "on"
+        sequence:
+          - target:
+              entity_id: light.prateleiraescritorio
+            data:
+              rgb_color:
+                - 255
+                - 255
+                - 0
+              brightness_pct: 100
+            action: light.turn_on
+      - conditions:
+          - condition: state
+            entity_id: binary_sensor.iracing_telemetry_ir2mqtt_yellow_flag
+            state: "on"
+        sequence:
+          - target:
+              entity_id: light.prateleiraescritorio
+            data:
+              rgb_color:
+                - 255
+                - 255
+                - 0
+              brightness_pct: 100
+            action: light.turn_on
+      - conditions:
+          - condition: state
+            entity_id: binary_sensor.iracing_telemetry_ir2mqtt_debris_flag
+            state: "on"
+        sequence:
+          - target:
+              entity_id: light.prateleiraescritorio
+            data:
+              rgb_color:
+                - 255
+                - 165
+                - 0
+              brightness_pct: 100
+            action: light.turn_on
+      - conditions:
+          - condition: state
+            entity_id: binary_sensor.iracing_telemetry_ir2mqtt_blue_flag
+            state: "on"
+        sequence:
+          - target:
+              entity_id: light.prateleiraescritorio
+            data:
+              rgb_color:
+                - 0
+                - 0
+                - 255
+              brightness_pct: 100
+            action: light.turn_on
+      - conditions:
+          - condition: state
+            entity_id: binary_sensor.iracing_telemetry_ir2mqtt_white_flag
+            state: "on"
+        sequence:
+          - target:
+              entity_id: light.prateleiraescritorio
+            data:
+              rgb_color:
+                - 255
+                - 255
+                - 255
+              brightness_pct: 100
+            action: light.turn_on
+      - conditions:
+          - condition: state
+            entity_id: binary_sensor.iracing_telemetry_ir2mqtt_repair_flag
+            state: "on"
+        sequence:
+          - target:
+              entity_id: light.prateleiraescritorio
+            data:
+              rgb_color:
+                - 255
+                - 140
+                - 0
+              brightness_pct: 100
+            action: light.turn_on
+      - conditions:
+          - condition: state
+            entity_id: binary_sensor.iracing_telemetry_ir2mqtt_crossed_flag
+            state: "on"
+        sequence:
+          - target:
+              entity_id: light.prateleiraescritorio
+            data:
+              rgb_color:
+                - 255
+                - 165
+                - 0
+              brightness_pct: 100
+              effect: colorloop
+            action: light.turn_on
+      - conditions:
+          - condition: state
+            entity_id: binary_sensor.iracing_telemetry_ir2mqtt_on_pit_road
+            state: "on"
+        sequence:
+          - repeat:
+              while:
+                - condition: state
+                  entity_id: binary_sensor.iracing_telemetry_ir2mqtt_on_pit_road
+                  state: "on"
+              sequence:
+                - target:
+                    entity_id: light.prateleiraescritorio
+                  data:
+                    rgb_color:
+                      - 0
+                      - 255
+                      - 255
+                    brightness_pct: 100
+                  action: light.turn_on
+                - delay:
+                    milliseconds: 500
+                - target:
+                    entity_id: light.prateleiraescritorio
+                  action: light.turn_off
+                - delay:
+                    milliseconds: 500
+      - conditions:
+          - condition: state
+            entity_id: binary_sensor.iracing_telemetry_ir2mqtt_green_flag
+            state: "on"
+        sequence:
+          - repeat:
+              while:
+                - condition: state
+                  entity_id: binary_sensor.iracing_telemetry_ir2mqtt_green_flag
+                  state: "on"
+              sequence:
+                - target:
+                    entity_id: light.prateleiraescritorio
+                  data:
+                    rgb_color:
+                      - 0
+                      - 255
+                      - 0
+                    brightness_pct: 100
+                  action: light.turn_on
+                - delay:
+                    milliseconds: 500
+                - target:
+                    entity_id: light.prateleiraescritorio
+                  action: light.turn_off
+                - delay:
+                    milliseconds: 500
+    default:
+      - target:
+          entity_id: light.prateleiraescritorio
+        action: light.turn_off
+mode: restart
