@@ -1,5 +1,5 @@
 # ===========================
-# iR2mqtt sensors
+# iR2mqtt LEGACY sensors
 # ===========================
 mqtt:
   sensor:
