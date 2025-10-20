@@ -26,7 +26,7 @@ It automatically discovers and creates all telemetry sensors from your iRacing s
 - Automatic sensor discovery (no YAML needed)  
 - Organized “iRacing Telemetry” entity group  
 - Supports flags, session state, lap data, and more  
-- Works with automations and dashboards instantly
+- Works with automations and dashboards instantly. [Examples](https://github.com/jmlt/ir2mqtt/blob/main/Guides/yaml/automation-example.yaml)
 
 ---
 
