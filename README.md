@@ -1,4 +1,6 @@
 # iR2mqtt - Home Assistant
+![Release](https://img.shields.io/github/v/release/jmlt/ir2mqtt)
+
 iR2mqtt is a simple, lightweight, fast, and easy to use bridge application that connects iRacing telemetry data to MQTT, enabling integration with Home Assistant. It uses the open-source [`pyirsdk`](https://github.com/kutu/pyirsdk) library for telemetry reading and [`paho-mqtt`](https://github.com/eclipse/paho.mqtt.python) for MQTT communication.
 
 ---
