@@ -1,15 +1,8 @@
 ![Logo](https://sys1823.pt/ir2mqtt/files/logo.png)
 
-# iR2mqtt Home Assistant Integration
+# Introducing the iR2mqtt Home Assistant Integration
 
 No more manual configuration, all sensors are now created automatically.
-
----
-
-## 🚀 What Is iR2mqtt Integration?
-
-This integration connects [iR2mqtt](https://github.com/jmlt/ir2mqtt) directly with Home Assistant.  
-It automatically discovers and creates all telemetry sensors from your iRacing sessions including flags, session data, car telemetry, and more, without the need to edit `configuration.yaml`.
 
 ---
 
