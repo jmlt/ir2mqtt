@@ -49,12 +49,11 @@ customize:
 3. Run iRacing and the iR2mqtt executable to start sending telemetry data
 
 **Configuration Example:**
+<img width="802" height="685" alt="options" src="https://github.com/user-attachments/assets/4f0ecfb3-840a-4888-ad9b-e95cb4f612d1" />
 
-<img width="803" alt="iR2mqtt configuration panel" src="https://github.com/user-attachments/assets/ab2f3ab2-ac15-40fe-a577-a1fd570bf191" />
 
 **Running iR2mqtt:**
-
-<img width="802" alt="iR2mqtt running with iRacing" src="https://github.com/user-attachments/assets/7644372d-eeda-431d-8088-ed9133615415" />
+<img width="802" height="685" alt="dash" src="https://github.com/user-attachments/assets/428b7a77-be95-43d1-87d9-1929d931f710" />
 
 ---
 
