@@ -94,7 +94,7 @@ customize:
 4. Enter the **MQTT Topic Prefix** (default: `iracing`)
 5. Click **Submit**
 
-<img width="1046" alt="iR2mqtt integration configuration" src="https://github.com/user-attachments/assets/338a4631-12f5-4489-abcc-8b9110c7fde3" />
+<img width="1052" height="329" alt="HA" src="https://github.com/user-attachments/assets/a8f651ca-45e9-44ad-b35d-a3fe449af875" />
 
 ---
 
@@ -102,7 +102,7 @@ customize:
 
 Once configured, all sensors will be automatically created and available in Home Assistant!
 
-<img width="1579" alt="iR2mqtt sensors in Home Assistant" src="https://github.com/user-attachments/assets/6353c1a5-9010-4fca-9041-3907493d54d7" />
+<img width="1425" height="704" alt="sensores" src="https://github.com/user-attachments/assets/aa0cac39-9185-4957-9e80-4ffda812e69a" />
 
 **Try this example automation:** [Flag-based lighting automation](https://github.com/jmlt/ir2mqtt/blob/main/Guides/yaml/automation-example.yaml)
 
